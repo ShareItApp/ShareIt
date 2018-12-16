@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ShareIt.Core.Migrations
+namespace ShareIt.Data.Migrations
 {
     public partial class InitialMigration : Migration
     {

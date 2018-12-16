@@ -9,9 +9,4 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ShareIt.Auth\ShareIt.Auth.csproj" />
-    <ProjectReference Include="..\ShareIt.Global\ShareIt.Global.csproj" />
-  </ItemGroup>
-
 </Project>

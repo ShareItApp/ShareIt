@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Design;
 using ShareIt.Global.Configuration;
 
-namespace ShareIt.Core.Data
+namespace ShareIt.Data
 {
     public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
     {

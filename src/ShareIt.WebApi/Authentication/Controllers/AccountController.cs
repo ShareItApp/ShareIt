@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using ShareIt.Auth.Entities;
+using ShareIt.Data.Auth;
+using ShareIt.Data.Auth.Entities;
 using ShareIt.WebApi.Authentication.ViewModels;
 using System.Threading.Tasks;
 
@@ -11,10 +12,12 @@ namespace ShareIt.WebApi.Authentication.Controllers
     public class AccountController : Controller
     {
         private readonly IMapper mapper;
+        private readonly IAuthManager authManager;
 
-        public AccountController(IMapper mapper)
+        public AccountController(IMapper mapper, IAuthManager authManager)
         {
             this.mapper = mapper;
+            this.authManager = authManager;
         }
 
         public IActionResult Index()
@@ -31,6 +34,14 @@ namespace ShareIt.WebApi.Authentication.Controllers
             }
 
             var userIdentity = this.mapper.Map<User>(model);
+            var isSuccessful = await this.authManager.CreateUserAsync(userIdentity, model.Password);
+
+            if (!isSuccessful)
+            {
+                return new BadRequestObjectResult(ModelState);
+            }
+
+            this.authManager.SaveChangesAsync();
 
             return new OkObjectResult("Account created");
         }

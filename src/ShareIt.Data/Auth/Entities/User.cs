@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace ShareIt.Auth.Entities
+namespace ShareIt.Data.Auth.Entities
 {
     public sealed class User : IdentityUser
     {
