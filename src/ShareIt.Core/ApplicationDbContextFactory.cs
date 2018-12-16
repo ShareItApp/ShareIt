@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.Extensions.Configuration;
-using System.IO;
+using ShareIt.Core.Configuration;
 
 namespace ShareIt.Core
 {
@@ -9,15 +8,10 @@ namespace ShareIt.Core
     {
         public ApplicationDbContext CreateDbContext(string[] args)
         {
-               var configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
-                .AddJsonFile("appsettings.Development.json")
-                .AddJsonFile("appsettings.Production.json", true)
-                .Build();
+            var configuration = new DefaultConfigurationBuilder().Build();
 
             var builder = new DbContextOptionsBuilder<ApplicationDbContext>();
-            var connectionString = configuration.GetConnectionString("DefaultConnection");
+            var connectionString = configuration.GetDefaultConnectionString();
 
             builder.UseSqlServer(connectionString);
 

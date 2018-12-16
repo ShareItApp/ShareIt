@@ -19,10 +19,9 @@ namespace ShareIt.WebApi
 
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = Configuration.GetConnectionString("DefaultConnection");
-
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddDbContext<ApplicationDbContext>(o => o.UseSqlServer(Configuration.GetDefaultConnectionString()));
 
             services.ConfigureCoreServices();
         }
