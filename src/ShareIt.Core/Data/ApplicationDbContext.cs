@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using ShareIt.Core.Data;
+using ShareIt.Core.Entities;
 
-namespace ShareIt.Core
+namespace ShareIt.Core.Data
 {
     public class ApplicationDbContext : IdentityDbContext<User>
     {

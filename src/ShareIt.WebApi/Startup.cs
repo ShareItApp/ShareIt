@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using AutoMapper;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ShareIt.Core;
+using ShareIt.Global.Configuration;
 
 namespace ShareIt.WebApi
 {
@@ -19,11 +21,14 @@ namespace ShareIt.WebApi
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services
+                .AddAutoMapper()
+                .ConfigureCoreServices(Configuration.GetDefaultConnectionString());
 
-            services.AddDbContext<ApplicationDbContext>(o => o.UseSqlServer(Configuration.GetDefaultConnectionString()));
-
-            services.ConfigureCoreServices();
+            services
+                .AddMvc()
+                .AddFluentValidation(v => v.RegisterValidatorsFromAssemblyContaining<Startup>())
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

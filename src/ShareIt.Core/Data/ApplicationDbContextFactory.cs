@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using ShareIt.Core.Configuration;
+using ShareIt.Global.Configuration;
 
-namespace ShareIt.Core
+namespace ShareIt.Core.Data
 {
     public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
     {

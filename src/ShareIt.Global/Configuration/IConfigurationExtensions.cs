@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System;
 
-namespace ShareIt.Core
+namespace ShareIt.Global.Configuration
 {
     public static class IConfigurationExtensions
     {

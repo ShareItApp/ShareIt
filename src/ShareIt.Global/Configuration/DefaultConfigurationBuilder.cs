@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System.IO;
 
-namespace ShareIt.Core.Configuration
+namespace ShareIt.Global.Configuration
 {
     public class DefaultConfigurationBuilder : ConfigurationBuilder
     {

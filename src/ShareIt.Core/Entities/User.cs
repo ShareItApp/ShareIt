@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace ShareIt.Core.Data
+namespace ShareIt.Core.Entities
 {
     public class User : IdentityUser
     {
