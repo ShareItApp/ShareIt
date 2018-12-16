@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using ShareIt.Core.Entities;
+using ShareIt.Auth.Entities;
 using ShareIt.WebApi.Authentication.ViewModels;
 using System.Threading.Tasks;
 
@@ -23,7 +23,7 @@ namespace ShareIt.WebApi.Authentication.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] RegistrationViewModel model)
+        public async Task<IActionResult> Post([FromBody]RegistrationViewModel model)
         {
             if (!ModelState.IsValid)
             {

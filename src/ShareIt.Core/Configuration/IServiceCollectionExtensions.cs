@@ -1,15 +1,20 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using ShareIt.Core.Data;
 
 namespace ShareIt.Core
 {
     public static class IServiceCollectionExtensions
     {
-        public static IServiceCollection ConfigureCoreServices(this IServiceCollection @this, string connectionString)
+        public static IServiceCollection AddDbContext<TContext>(this IServiceCollection @this, string connectionString)
+            where TContext : DbContext
         {
-            @this.AddDbContext<ApplicationDbContext>(o => o.UseSqlServer(connectionString));
+            @this.AddDbContext<TContext>(o => o.UseSqlServer(connectionString));
 
+            return @this;
+        }
+
+        public static IServiceCollection AddCoreServices(this IServiceCollection @this)
+        {
             return @this;
         }
     }

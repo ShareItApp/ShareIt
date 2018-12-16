@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ShareIt.Auth\ShareIt.Auth.csproj" />
     <ProjectReference Include="..\ShareIt.Core\ShareIt.Core.csproj" />
     <ProjectReference Include="..\ShareIt.Global\ShareIt.Global.csproj" />
   </ItemGroup>

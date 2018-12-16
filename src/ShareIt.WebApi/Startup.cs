@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ShareIt.Core;
-using ShareIt.Global.Configuration;
+using ShareIt.Core.Data;
 
 namespace ShareIt.WebApi
 {
@@ -22,8 +22,9 @@ namespace ShareIt.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services
+                .AddDbContext<ApplicationDbContext>()
                 .AddAutoMapper()
-                .ConfigureCoreServices(Configuration.GetDefaultConnectionString());
+                .AddCoreServices();
 
             services
                 .AddMvc()
